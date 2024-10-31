@@ -1,0 +1,46 @@
+rule all:
+    input:
+        "results/boxplot.pdf",
+
+
+rule generate_data:
+    output:
+        dataset="results/datasets/method={method}/seed={seed}/samp_size={samp_size}/data.csv",
+        dag="results/datasets/method={method}/seed={seed}/samp_size={samp_size}/ground_truth_dag.csv",
+        hidden_nodes="results/datasets/method={method}/seed={seed}/samp_size={samp_size}/hidden_nodes.csv",
+    script:
+        "scripts/generate_data.py"
+
+
+rule fit_fci:
+    input:
+        dataset = rules.generate_data.output.dataset,
+    output:
+        pag = "results/est/method={method}/seed={seed}/samp_size={samp_size}/pag.csv",
+    script:
+        "scripts/fit_fci.py"
+
+
+rule evaluate_shd:
+    input:
+        true_dag=rules.generate_data.output.dag,
+        hidden_nodes=rules.generate_data.output.hidden_nodes,
+        est_pag=rules.fit_fci.output,
+    output:
+        shd="results/eval/method={method}/seed={seed}/samp_size={samp_size}/shd.csv",
+    script:
+        "scripts/eval_shd.py"
+
+
+rule join_csv:
+    output:
+        "results/",
+    script:
+        "scripts/join_csv.py"
+
+
+rule boxplot:
+    output:
+        "results/boxplot.pdf",
+    script:
+        "scripts/boxplot.py"
