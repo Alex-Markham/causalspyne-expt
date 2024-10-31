@@ -5,18 +5,18 @@ rule all:
 
 rule generate_data:
     output:
-        dataset="results/datasets/method={method}/seed={seed}/samp_size={samp_size}/data.csv",
-        dag="results/datasets/method={method}/seed={seed}/samp_size={samp_size}/ground_truth_dag.csv",
-        hidden_nodes="results/datasets/method={method}/seed={seed}/samp_size={samp_size}/hidden_nodes.csv",
+        dataset="results/datasets/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/data.csv",
+        dag="results/datasets/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/ground_truth_dag.csv",
+        hidden_nodes="results/datasets/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/hidden_nodes.csv",
     script:
         "scripts/generate_data.py"
 
 
 rule fit_fci:
     input:
-        dataset = rules.generate_data.output.dataset,
+        dataset=rules.generate_data.output.dataset,
     output:
-        pag = "results/est/method={method}/seed={seed}/samp_size={samp_size}/pag.csv",
+        pag="results/est/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
     script:
         "scripts/fit_fci.py"
 
@@ -27,19 +27,29 @@ rule evaluate_shd:
         hidden_nodes=rules.generate_data.output.hidden_nodes,
         est_pag=rules.fit_fci.output,
     output:
-        shd="results/eval/method={method}/seed={seed}/samp_size={samp_size}/shd.csv",
+        shd="results/eval/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/shd.csv",
     script:
         "scripts/eval_shd.py"
 
 
 rule join_csv:
+    input:
+        expand(
+            rules.evaluate_shd.output.shd,
+            method=["standard", "child"],
+            graph_size=["small", "medium", "large"],
+            seed=range(10),
+            samp_size=[1000],
+        ),
     output:
-        "results/",
+        csv="results/shd.csv",
     script:
         "scripts/join_csv.py"
 
 
 rule boxplot:
+    input:
+        csv=rules.join_csv.output.csv,
     output:
         "results/boxplot.pdf",
     script:
