@@ -20,10 +20,10 @@ if graph_size == "small":
     degree = 2
 elif graph_size == "medium":
     num_micro, num_macro = 4, 5
-    degree = 3
+    degree = 4
 elif graph_size == "large":
     num_micro, num_macro = 8, 12
-    degree = 4
+    degree = 5
 
 # causalspyne data generation
 arr_data, node_names = gen_partially_observed(
