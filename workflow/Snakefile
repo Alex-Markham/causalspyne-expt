@@ -37,9 +37,9 @@ rule join_csv:
         expand(
             rules.evaluate_shd.output.shd,
             method=["standard", "child"],
-            graph_size=["small", "medium", "large"],
+            graph_size=["small", "medium"],
             seed=range(10),
-            samp_size=[1000],
+            samp_size=[10000],
         ),
     output:
         csv="results/shd.csv",

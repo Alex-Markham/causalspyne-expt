@@ -16,17 +16,20 @@ elif method == "child":
     percentile = [0.5, 1.0]
 
 if graph_size == "small":
-    num_micro, num_macro = 3, 4
+    num_micro, num_macro = 2, 3
+    degree = 2
 elif graph_size == "medium":
-    num_micro, num_macro = 5, 8
+    num_micro, num_macro = 4, 5
+    degree = 3
 elif graph_size == "large":
     num_micro, num_macro = 8, 12
+    degree = 4
 
 # causalspyne data generation
 arr_data, node_names = gen_partially_observed(
     size_micro_node_dag=num_micro,
     num_macro_nodes=num_macro,
-    degree=2,  # average vertex/node degree
+    degree=degree,  # average vertex/node degree
     list_confounder2hide=percentile,  # choie of confounder to hide: percentile or index of all toplogically sorted confounders
     num_sample=samp_size,
     rng=np.random.default_rng(seed),
