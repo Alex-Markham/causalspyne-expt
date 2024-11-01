@@ -38,7 +38,7 @@ rule join_csv:
             rules.evaluate_shd.output.shd,
             method=["standard", "child"],
             graph_size=["small", "medium"],
-            seed=range(10),
+            seed=range(100),
             samp_size=[10000],
         ),
     output:
