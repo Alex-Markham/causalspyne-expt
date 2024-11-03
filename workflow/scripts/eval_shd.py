@@ -23,6 +23,8 @@ shd_df = pd.DataFrame(
         "samp_size": [snakemake.wildcards["samp_size"]],
         "seed": [snakemake.wildcards["seed"]],
         "shd": [shd],
+        "dag_size": [len(true_dag)],
+        "num_hidden": [len(hidden_nodes)],
     }
 )
 
