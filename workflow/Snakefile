@@ -16,7 +16,7 @@ rule fit_fci:
     input:
         dataset=rules.generate_data.output.dataset,
     output:
-        pag="results/est/alg={fci}/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
+        pag="results/est/alg=fci/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
     script:
         "scripts/fit_fci.py"
 
@@ -25,7 +25,7 @@ rule fit_linlam:
     input:
         dataset=rules.generate_data.output.dataset,
     output:
-        pag="results/est/alg={linlam}/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
+        pag="results/est/alg=linlam/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
     script:
         "scripts/fit_linlam.py"
 
@@ -34,9 +34,9 @@ rule evaluate_shd:
     input:
         true_dag=rules.generate_data.output.dag,
         hidden_nodes=rules.generate_data.output.hidden_nodes,
-        est_pag=rules.fit_fci.output,
+        est_pag="results/est/alg={alg}/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
     output:
-        shd="results/eval/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/shd.csv",
+        shd="results/eval/alg={alg}/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/shd.csv",
     script:
         "scripts/eval_shd.py"
 
@@ -45,10 +45,11 @@ rule join_csv:
     input:
         expand(
             rules.evaluate_shd.output.shd,
+            alg=["fci"],
             method=["standard", "child"],
             graph_size=["small", "medium"],
-            seed=range(100),
-            samp_size=[10000],
+            seed=range(10),
+            samp_size=[1000],
         ),
     output:
         csv="results/shd.csv",
