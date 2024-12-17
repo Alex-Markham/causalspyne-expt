@@ -16,9 +16,18 @@ rule fit_fci:
     input:
         dataset=rules.generate_data.output.dataset,
     output:
-        pag="results/est/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
+        pag="results/est/alg={fci}/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
     script:
         "scripts/fit_fci.py"
+
+
+rule fit_linlam:
+    input:
+        dataset=rules.generate_data.output.dataset,
+    output:
+        pag="results/est/alg={linlam}/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
+    script:
+        "scripts/fit_linlam.py"
 
 
 rule evaluate_shd:
