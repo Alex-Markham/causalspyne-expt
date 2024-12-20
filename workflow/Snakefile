@@ -3,11 +3,16 @@ rule all:
         "results/boxplot.pdf",
 
 
+pattern_dataset = (
+    "method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/"
+)
+
+
 rule generate_data:
     output:
-        dataset="results/datasets/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/data.csv",
-        dag="results/datasets/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/ground_truth_dag.csv",
-        hidden_nodes="results/datasets/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/hidden_nodes.csv",
+        dataset=f"results/datasets/{pattern_dataset}data.csv",
+        dag=f"results/datasets/{pattern_dataset}ground_truth_dag.csv",
+        hidden_nodes=f"results/datasets/{pattern_dataset}hidden_nodes.csv",
     script:
         "scripts/generate_data.py"
 
@@ -16,7 +21,7 @@ rule fit_fci:
     input:
         dataset=rules.generate_data.output.dataset,
     output:
-        pag="results/est/alg=fci/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
+        pag=f"results/est/alg=fci/{pattern_dataset}pag.csv",
     script:
         "scripts/fit_fci.py"
 
@@ -25,7 +30,7 @@ rule fit_linlam:
     input:
         dataset=rules.generate_data.output.dataset,
     output:
-        pag="results/est/alg=linlam/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
+        causal_order=f"results/est/alg=linlam/{pattern_dataset}pag.csv",
     script:
         "scripts/fit_linlam.py"
 
@@ -34,9 +39,9 @@ rule evaluate_shd:
     input:
         true_dag=rules.generate_data.output.dag,
         hidden_nodes=rules.generate_data.output.hidden_nodes,
-        est_pag="results/est/alg={alg}/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/pag.csv",
+        est_pag=f"results/est/alg={{alg}}/{pattern_dataset}pag.csv",
     output:
-        shd="results/eval/alg={alg}/method={method}/graph_size={graph_size}/seed={seed}/samp_size={samp_size}/shd.csv",
+        shd=f"results/eval/alg={{alg}}/{pattern_dataset}shd.csv",
     script:
         "scripts/eval_shd.py"
 
