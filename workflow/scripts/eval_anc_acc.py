@@ -26,7 +26,7 @@ acc_df = pd.DataFrame(
         "samp_size": [snakemake.wildcards["samp_size"]],
         "seed": [snakemake.wildcards["seed"]],
         "anc_acc": [acc],
-        "dag_size": [len(true_dag)],
+        "dag_size": [len(pred_order)],
         "num_hidden": [len(hidden_nodes)],
     }
 )
