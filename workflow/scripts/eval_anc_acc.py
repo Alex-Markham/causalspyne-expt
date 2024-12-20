@@ -10,12 +10,10 @@ with open(snakemake.input["true_dag"], "rb") as inp:
 pred_order = np.loadtxt(str(snakemake.input["pred_order"]), delimiter=",", dtype=int)
 hidden_nodes = np.loadtxt(
     str(snakemake.input["hidden_nodes"]), delimiter=",", dtype=int
-)
+).tolist()
 
-if hidden_nodes.size == 0:
-    hidden_nodes = []
-else:
-    hidden_nodes = list(hidden_nodes)
+if type(hidden_nodes) is int:
+    hidden_nodes = [hidden_nodes]
 
 # evaluate
 acc = ancestral_acc(true_dag, pred_order, hidden_nodes)
