@@ -15,6 +15,7 @@ rule generate_data:
         dag=f"results/datasets/{pattern_dataset}ground_truth_dag.csv",
         dag_pkl=f"results/datasets/{pattern_dataset}ground_truth_dag.pkl",
         hidden_nodes=f"results/datasets/{pattern_dataset}hidden_nodes.csv",
+        node_names=f"results/datasets/{pattern_dataset}node_names.pkl",
     script:
         "scripts/generate_data.py"
 
@@ -32,6 +33,7 @@ rule fit_fci:
 rule fit_linlam:
     input:
         dataset=rules.generate_data.output.dataset,
+        node_names=rules.generate_data.output.node_names,
     output:
         graph=f"results/est/alg=linlam/{pattern_dataset}graph.csv",
         causal_order=f"results/est/alg=linlam/{pattern_dataset}causal_order.csv",
