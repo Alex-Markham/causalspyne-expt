@@ -16,4 +16,4 @@ obs_causal_order, order_latent = get_causal_order(graph, node_names)
 
 # save outputs
 np.savetxt(snakemake.output["graph"], graph.graph, delimiter=",", fmt="%d")
-np.savetxt(snakemake.output["causal_order"], obs_causal_order, delimiter=",", fmt="%d")
+np.savetxt(snakemake.output["causal_order"], obs_causal_order, delimiter=",", fmt="%s")
