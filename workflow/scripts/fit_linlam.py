@@ -1,5 +1,6 @@
 import numpy as np
 from causallearn.search.HiddenCausal.GIN.GIN import GIN
+from causalspyne.utils_causallearn_g2ancestral import get_causal_order
 
 # Load the dataset
 dataset = np.loadtxt(str(snakemake.input.dataset), delimiter=",")[1:]
@@ -7,10 +8,7 @@ dataset = np.loadtxt(str(snakemake.input.dataset), delimiter=",")[1:]
 # Run LiNLAM algorithm
 graph, latent_causal_order = GIN(dataset)
 
-# causal order of labels of observed nodes
-causal_order = graph.get_causal_ordering()
-node_map = graph.get_node_map()
-obs_causal_order = [node_map[node] for node in causal_order]
+obs_causal_order, order_latent = get_causal_order(graph, node_names)
 
 
 # save outputs
