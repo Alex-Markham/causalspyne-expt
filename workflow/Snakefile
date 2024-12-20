@@ -22,6 +22,7 @@ rule fit_fci:
         dataset=rules.generate_data.output.dataset,
     output:
         pag=f"results/est/alg=fci/{pattern_dataset}pag.csv",
+        causal_order=f"results/est/alg=fci/{pattern_dataset}causal_order.csv",
     script:
         "scripts/fit_fci.py"
 
