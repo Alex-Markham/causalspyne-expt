@@ -49,4 +49,4 @@ data_df.to_csv(snakemake.output["dataset"], index=False)
 with open(snakemake.output["dag_pkl"], "wb") as outp:
     pickle.dump(dag, outp, pickle.HIGHEST_PROTOCOL)
 with open(snakemake.output["node_names"], "wb") as outp:
-    pickle.dump(dag, outp, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(node_names, outp, pickle.HIGHEST_PROTOCOL)
