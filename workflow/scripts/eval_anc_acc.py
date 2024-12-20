@@ -21,6 +21,7 @@ acc = ancestral_acc(true_dag, pred_order, hidden_nodes)
 # save output
 acc_df = pd.DataFrame(
     {
+        "alg": [snakemake.wildcards["alg"]],
         "method": [snakemake.wildcards["method"]],
         "graph_size": [snakemake.wildcards["graph_size"]],
         "samp_size": [snakemake.wildcards["samp_size"]],

@@ -18,6 +18,7 @@ shd = structural_hamming_distance(true_dag, hidden_nodes, est_pag)
 
 shd_df = pd.DataFrame(
     {
+        "alg": [snakemake.wildcards["alg"]],
         "method": [snakemake.wildcards["method"]],
         "graph_size": [snakemake.wildcards["graph_size"]],
         "samp_size": [snakemake.wildcards["samp_size"]],
