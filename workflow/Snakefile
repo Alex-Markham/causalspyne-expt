@@ -1,6 +1,7 @@
 rule all:
     input:
-        "results/boxplot.pdf",
+        "results/boxplot_shd.pdf",
+        "results/boxplot_acc.pdf",
 
 
 pattern_dataset = (
@@ -12,6 +13,7 @@ rule generate_data:
     output:
         dataset=f"results/datasets/{pattern_dataset}data.csv",
         dag=f"results/datasets/{pattern_dataset}ground_truth_dag.csv",
+        dag_pkl=f"results/datasets/{pattern_dataset}ground_truth_dag.pkl",
         hidden_nodes=f"results/datasets/{pattern_dataset}hidden_nodes.csv",
     script:
         "scripts/generate_data.py"
@@ -48,7 +50,17 @@ rule evaluate_shd:
         "scripts/eval_shd.py"
 
 
-rule join_csv:
+rule evaluate_anc_acc:
+    input:
+        true_dag=rules.generate_data.output.dag_pkl,
+        pred_order=f"results/est/alg={{alg}}/{pattern_dataset}causal_order.csv",
+    output:
+        anc_acc=f"results/eval/alg={{alg}}/{pattern_dataset}anc_acc.csv",
+    script:
+        "scripts/eval_anc_acc.py"
+
+
+rule boxplot_shd_csv:
     input:
         expand(
             rules.evaluate_shd.output.shd,
@@ -64,10 +76,35 @@ rule join_csv:
         "scripts/join_csv.py"
 
 
-rule boxplot:
+rule boxplot_shd:
     input:
-        csv=rules.join_csv.output.csv,
+        csv=rules.boxplot_shd_csv.output.csv,
     output:
-        "results/boxplot.pdf",
+        "results/boxplot_shd.pdf",
     script:
-        "scripts/boxplot.py"
+        "scripts/boxplot_shd.py"
+
+
+rule boxplot_acc_csv:
+    input:
+        expand(
+            rules.evaluate_anc_acc.output.anc_acc,
+            alg=["fci", "linlam"],
+            method=["standard", "child"],
+            graph_size=["small", "medium"],
+            seed=range(10),
+            samp_size=[1000],
+        ),
+    output:
+        csv="results/acc.csv",
+    script:
+        "scripts/join_csv.py"
+
+
+rule boxplot_acc:
+    input:
+        csv=rules.boxplot_acc_csv.output.csv,
+    output:
+        "results/boxplot_acc.pdf",
+    script:
+        "scripts/boxplot_acc.py"

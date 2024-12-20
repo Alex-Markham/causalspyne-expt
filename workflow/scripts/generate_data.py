@@ -1,6 +1,8 @@
-from causalspyne import gen_partially_observed
+import pickle
+
 import numpy as np
 import pandas as pd
+from causalspyne import gen_partially_observed
 
 # snakemake inputs
 method = snakemake.wildcards["method"]
@@ -26,7 +28,7 @@ elif graph_size == "large":
     degree = 5
 
 # causalspyne data generation
-arr_data, node_names = gen_partially_observed(
+arr_data, node_names, dag = gen_partially_observed(
     size_micro_node_dag=num_micro,
     num_macro_nodes=num_macro,
     degree=degree,  # average vertex/node degree
@@ -44,3 +46,5 @@ data_df = pd.DataFrame(arr_data)
 data_df.to_csv(snakemake.output["dataset"], index=False)
 # `snakemake.output['dag']` and `snakemake.output['hidden_nodes']`
 # saved automatically in call to `gen_partially_observed()`
+with open(snakemake.output["dag_pkl"], "wb") as outp:
+    pickle.dump(dag, outp, pickle.HIGHEST_PROTOCOL)
