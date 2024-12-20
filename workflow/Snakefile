@@ -30,7 +30,8 @@ rule fit_linlam:
     input:
         dataset=rules.generate_data.output.dataset,
     output:
-        causal_order=f"results/est/alg=linlam/{pattern_dataset}pag.csv",
+        graph=f"results/est/alg=linlam/{pattern_dataset}graph.csv",
+        causal_order=f"results/est/alg=linlam/{pattern_dataset}causal_order.csv",
     script:
         "scripts/fit_linlam.py"
 
