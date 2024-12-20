@@ -53,6 +53,7 @@ rule evaluate_shd:
 rule evaluate_anc_acc:
     input:
         true_dag=rules.generate_data.output.dag_pkl,
+        hidden_nodes=rules.generate_data.output.hidden_nodes,
         pred_order=f"results/est/alg={{alg}}/{pattern_dataset}causal_order.csv",
     output:
         anc_acc=f"results/eval/alg={{alg}}/{pattern_dataset}anc_acc.csv",

@@ -8,9 +8,17 @@ from causalspyne.ancestral_acc import ancestral_acc
 with open(snakemake.input["true_dag"], "rb") as inp:
     true_dag = pickle.load(inp)
 pred_order = np.loadtxt(str(snakemake.input["pred_order"]), delimiter=",", dtype=int)
+hidden_nodes = np.loadtxt(
+    str(snakemake.input["hidden_nodes"]), delimiter=",", dtype=int
+)
+
+if hidden_nodes.size == 0:
+    hidden_nodes = []
+else:
+    hidden_nodes = list(hidden_nodes)
 
 # evaluate
-acc = ancestral_acc(true_dag, pred_order)
+acc = ancestral_acc(true_dag, pred_order, hidden_nodes)
 
 # save output
 acc_df = pd.DataFrame(
