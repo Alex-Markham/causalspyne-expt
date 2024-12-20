@@ -40,7 +40,6 @@ arr_data, node_names, dag = gen_partially_observed(
     plot=False,
 )
 
-
 # outputs
 data_df = pd.DataFrame(arr_data)
 data_df.to_csv(snakemake.output["dataset"], index=False)

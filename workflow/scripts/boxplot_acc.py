@@ -5,7 +5,7 @@ acc_results = pd.read_csv(snakemake.input["csv"])
 
 plot = sns.catplot(
     data=acc_results,
-    x="num_meas",
+    x="graph_size",
     y="anc_acc",
     hue="method",
     log_scale=True,
