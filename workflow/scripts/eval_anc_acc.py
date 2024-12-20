@@ -7,7 +7,7 @@ from causalspyne.ancestral_acc import ancestral_acc
 # load inputs
 with open(snakemake.input["true_dag"], "rb") as inp:
     true_dag = pickle.load(inp)
-dataset = np.loadtxt(str(snakemake.input["pred_order"]), delimiter=",")
+pred_order = np.loadtxt(str(snakemake.input["pred_order"]), delimiter=",", dtype=int)
 
 # evaluate
 acc = ancestral_acc(true_dag, pred_order)
