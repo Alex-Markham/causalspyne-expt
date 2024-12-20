@@ -48,3 +48,5 @@ data_df.to_csv(snakemake.output["dataset"], index=False)
 # saved automatically in call to `gen_partially_observed()`
 with open(snakemake.output["dag_pkl"], "wb") as outp:
     pickle.dump(dag, outp, pickle.HIGHEST_PROTOCOL)
+with open(snakemake.output["node_names"], "wb") as outp:
+    pickle.dump(dag, outp, pickle.HIGHEST_PROTOCOL)
