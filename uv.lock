@@ -76,7 +76,7 @@ wheels = [
 [[package]]
 name = "causalspyne"
 version = "0.1.4"
-source = { git = "https://github.com/marrlab/causalspyne#a0ac45ca73164719f698476c578b501f11b342d1" }
+source = { git = "https://github.com/marrlab/causalspyne#801e8948ca17401d32571ebf07024c59feb7daec" }
 dependencies = [
     { name = "matplotlib" },
     { name = "networkx" },
