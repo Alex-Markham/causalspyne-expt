@@ -69,8 +69,8 @@ rule boxplot_shd_csv:
             rules.evaluate_shd.output.shd,
             alg=["fci"],
             method=["standard", "child"],
-            graph_size=["small", "medium"],
-            seed=range(10),
+            graph_size=["small", "medium", "large"],
+            seed=range(30),
             samp_size=[1000],
         ),
     output:
@@ -94,8 +94,8 @@ rule boxplot_acc_csv:
             rules.evaluate_anc_acc.output.anc_acc,
             alg=["fci", "linlam"],
             method=["standard", "child"],
-            graph_size=["small", "medium"],
-            seed=range(10),
+            graph_size=["small", "medium", "large"],
+            seed=range(30),
             samp_size=[1000],
         ),
     output:
