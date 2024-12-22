@@ -9,6 +9,7 @@ dependencies = [
     "causalspyne",
     "seaborn>=0.13.2",
     "snakefmt>=0.10.2",
+    "snakemake-executor-plugin-slurm>=0.11.2",
     "snakemake>=8.25.0",
 ]
 
