@@ -70,7 +70,7 @@ rule boxplot_shd_csv:
             alg=["fci"],
             method=["standard", "child"],
             graph_size=["small", "medium"],
-            seed=range(10),
+            seed=range(30),
             samp_size=[1000],
         ),
     output:
@@ -95,7 +95,7 @@ rule boxplot_acc_csv:
             alg=["fci", "linlam"],
             method=["standard", "child"],
             graph_size=["small", "medium"],
-            seed=range(10),
+            seed=range(30),
             samp_size=[1000],
         ),
     output:
