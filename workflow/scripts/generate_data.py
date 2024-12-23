@@ -13,10 +13,10 @@ graph_size = snakemake.wildcards["graph_size"]
 output_dir = snakemake.output["dataset"][:-8]
 
 if method == "standard":
-    percentile = [0, 0.1]
+    percentile = [0]
 
 elif method == "child":
-    percentile = [0.9, 1.0]
+    percentile = [0.7, 0.9]
 
 if graph_size == "small":
     num_micro, num_macro = 2, 3
