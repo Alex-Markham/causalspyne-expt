@@ -13,5 +13,8 @@ uv run snakemake all  -j 12  # this does not require installation of snakemake, 
 #uv add numpy will add new packages
 #uv add causaulspyne@git.come
 
+
+uv run snakemake --rerun-incomplete -j 10 to start again 
+
 # final results live in the "results" directory
 # in the workflow diretory you can find the snakefile

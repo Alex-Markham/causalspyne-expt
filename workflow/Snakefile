@@ -63,6 +63,7 @@ rule evaluate_anc_acc:
         "scripts/eval_anc_acc.py"
 
 
+from itertools import chain
 rule boxplot_shd_csv:
     input:
         expand(
@@ -70,7 +71,7 @@ rule boxplot_shd_csv:
             alg=["fci"],
             method=["standard", "child"],
             graph_size=["small", "medium", "large"],
-            seed=range(30),
+            seed=chain(range(20), range(21,30)),
             samp_size=[1000],
         ),
     output:
@@ -95,7 +96,7 @@ rule boxplot_acc_csv:
             alg=["fci", "linlam"],
             method=["standard", "child"],
             graph_size=["small", "medium", "large"],
-            seed=range(30),
+            seed=chain(range(20), range(21,30)),
             samp_size=[1000],
         ),
     output:
