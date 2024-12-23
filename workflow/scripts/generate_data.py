@@ -14,8 +14,9 @@ output_dir = snakemake.output["dataset"][:-8]
 
 if method == "standard":
     percentile = [0, 0.1]
+
 elif method == "child":
-    percentile = [0.5, 1.0]
+    percentile = [0.9, 1.0]
 
 if graph_size == "small":
     num_micro, num_macro = 2, 3
