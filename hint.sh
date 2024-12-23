@@ -7,8 +7,9 @@ uv lock --upgrade-package causalSpyne  # <package> does not have to be in pip, t
 # consistency problems.
 # [tool.uv.sources]
 # causalspyne = { git = "https://github.com/marrlab/causalspyne" }
-snakemake all # don't use this
-uv run snakemake all   # this does not require installation of snakemake, uv will create a temporary virtural environment
+#
+# snakemake all -j 12 # don't use this
+uv run snakemake all  -j 12  # this does not require installation of snakemake, uv will create a temporary virtural environment, -j specifies number of cores
 #uv add numpy will add new packages
 #uv add causaulspyne@git.come
 
