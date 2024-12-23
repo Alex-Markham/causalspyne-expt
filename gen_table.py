@@ -9,11 +9,13 @@ if len(sys.argv) < 2:
 
 # Get filename from command-line argument
 csv_filename = sys.argv[1]
+metric_name = sys.argv[2]
 # Read the CSV file
 df = pd.read_csv(csv_filename)
 
 # Group by method and graph_size, calculate mean SHD
-grouped = df.groupby(['method', 'graph_size'])['shd'].mean().unstack()
+# grouped = df.groupby(['method', 'graph_size'])['shd'].mean().unstack()
+grouped = df.groupby(['method', 'graph_size'])[metric_name].mean().unstack()
 
 
 
