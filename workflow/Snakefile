@@ -41,6 +41,16 @@ rule fit_linlam:
         "scripts/fit_linlam.py"
 
 
+rule fit_parcelingam:
+    input:
+        dataset=rules.generate_data.output.dataset,
+    output:
+        pag=f"results/est/alg=parcelingam/{pattern_dataset}pag.csv",
+        causal_order=f"results/est/alg=parcelingam/{pattern_dataset}causal_order.csv",
+    script:
+        "scripts/fit_parcelingam.py"
+
+
 rule evaluate_shd:
     input:
         true_dag=rules.generate_data.output.dag,
@@ -68,7 +78,7 @@ rule boxplot_shd_csv:
     input:
         expand(
             rules.evaluate_shd.output.shd,
-            alg=["fci"],
+            alg=["fci", "parcelingam"],
             method=["standard", "child"],
             graph_size=["small", "medium"],
             seed=chain(range(20), range(21,30)),
@@ -93,7 +103,7 @@ rule boxplot_acc_csv:
     input:
         expand(
             rules.evaluate_anc_acc.output.anc_acc,
-            alg=["fci", "linlam"],
+            alg=["fci", "linlam", "parcelingam"],
             method=["standard", "child"],
             graph_size=["small", "medium"],
             seed=chain(range(20), range(21,30)),
