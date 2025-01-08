@@ -92,6 +92,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "causal-learn" },
     { name = "causalspyne" },
+    { name = "lingam" },
     { name = "seaborn" },
     { name = "snakefmt" },
     { name = "snakemake" },
@@ -102,6 +103,7 @@ dependencies = [
 requires-dist = [
     { name = "causal-learn", specifier = ">=0.1.3.8" },
     { name = "causalspyne", git = "https://github.com/marrlab/causalspyne" },
+    { name = "lingam", specifier = ">=1.9.1" },
     { name = "seaborn", specifier = ">=0.13.2" },
     { name = "snakefmt", specifier = ">=0.10.2" },
     { name = "snakemake", specifier = ">=8.25.0" },
@@ -316,6 +318,15 @@ wheels = [
 ]
 
 [[package]]
+name = "future"
+version = "1.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a7/b2/4140c69c6a66432916b26158687e821ba631a4c9273c474343badf84d3ba/future-1.0.0.tar.gz", hash = "sha256:bd2968309307861edae1458a4f8a4f3598c03be43b97521076aebf5d94c07b05", size = 1228490 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/da/71/ae30dadffc90b9006d77af76b393cb9dfbfc9629f339fc1574a1c52e6806/future-1.0.0-py3-none-any.whl", hash = "sha256:929292d34f5872e70396626ef385ec22355a1fae8ad29e1a734c3e43f9fbc216", size = 491326 },
+]
+
+[[package]]
 name = "gitdb"
 version = "4.0.11"
 source = { registry = "https://pypi.org/simple" }
@@ -496,6 +507,28 @@ wheels = [
 ]
 
 [[package]]
+name = "lingam"
+version = "1.9.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "graphviz" },
+    { name = "matplotlib" },
+    { name = "networkx" },
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "psy" },
+    { name = "pygam" },
+    { name = "scikit-learn" },
+    { name = "scipy" },
+    { name = "semopy" },
+    { name = "statsmodels" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c6/02/078fc953e8bfb97eeeb36b8bf61b5e5fa840e9b8935020a8b37a23027b7a/lingam-1.9.1.tar.gz", hash = "sha256:dd5828f12b79b42171749ba3a5369ba5b8eb17cff47e19d414dcf25025564b0b", size = 101883 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d4/ab/936e31cff028efd1e7b765913bf488ca84cfbd07c8c17b764a542c345703/lingam-1.9.1-py3-none-any.whl", hash = "sha256:edc2d9276341675baafb2527d43f15d620881faf1e224cfa8672b24ce4a2a94f", size = 103077 },
+]
+
+[[package]]
 name = "markupsafe"
 version = "3.0.2"
 source = { registry = "https://pypi.org/simple" }
@@ -571,6 +604,15 @@ wheels = [
 ]
 
 [[package]]
+name = "mpmath"
+version = "1.3.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/e0/47/dd32fa426cc72114383ac549964eecb20ecfd886d1e5ccf5340b55b02f57/mpmath-1.3.0.tar.gz", hash = "sha256:7a28eb2a9774d00c7bc92411c19a89209d5da7c4c9a9e227be8330a23a25b91f", size = 508106 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl", hash = "sha256:a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c", size = 536198 },
+]
+
+[[package]]
 name = "mypy-extensions"
 version = "1.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -601,6 +643,19 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/fd/1d/06475e1cd5264c0b870ea2cc6fdb3e37177c1e565c43f56ff17a10e3937f/networkx-3.4.2.tar.gz", hash = "sha256:307c3669428c5362aab27c8a1260aa8f47c4e91d3891f48be0141738d8d053e1", size = 2151368 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b9/54/dd730b32ea14ea797530a4479b2ed46a6fb250f682a9cfb997e968bf0261/networkx-3.4.2-py3-none-any.whl", hash = "sha256:df5d4365b724cf81b8c6a7312509d0c22386097011ad1abe274afd5e9d3bbc5f", size = 1723263 },
+]
+
+[[package]]
+name = "numdifftools"
+version = "0.9.41"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "scipy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a7/3c/32bcbc96f465d5b34986d75d4eb3531f3f3e5b36099970bfbce8e9bc1712/numdifftools-0.9.41.tar.gz", hash = "sha256:4ef705cd3c06211b3a4e9fd05ad622be916dcfda40732f0128805a2c4be389b4", size = 6735932 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a3/5c/37cd5db8c465db2664b2219410b8bc7743da6edb1b616b5d13008bd7cac2/numdifftools-0.9.41-py2.py3-none-any.whl", hash = "sha256:a8b162e06889ea73643a47b84935a63d8214d4b4b0805d36a3c28c56379b3e51", size = 100223 },
 ]
 
 [[package]]
@@ -762,6 +817,18 @@ wheels = [
 ]
 
 [[package]]
+name = "progressbar2"
+version = "4.5.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "python-utils" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/19/24/3587e795fc590611434e4bcb9fbe0c3dddb5754ce1a20edfd86c587c0004/progressbar2-4.5.0.tar.gz", hash = "sha256:6662cb624886ed31eb94daf61e27583b5144ebc7383a17bae076f8f4f59088fb", size = 101449 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ee/94/448f037fb0ffd0e8a63b625cf9f5b13494b88d15573a987be8aaa735579d/progressbar2-4.5.0-py3-none-any.whl", hash = "sha256:625c94a54e63915b3959355e6d4aacd63a00219e5f3e2b12181b76867bf6f628", size = 57132 },
+]
+
+[[package]]
 name = "psutil"
 version = "6.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -774,6 +841,20 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/27/c2/d034856ac47e3b3cdfa9720d0e113902e615f4190d5d1bdb8df4b2015fb2/psutil-6.1.0-cp36-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d905186d647b16755a800e7263d43df08b790d709d575105d419f8b6ef65423a", size = 288804 },
     { url = "https://files.pythonhosted.org/packages/ea/55/5389ed243c878725feffc0d6a3bc5ef6764312b6fc7c081faaa2cfa7ef37/psutil-6.1.0-cp37-abi3-win32.whl", hash = "sha256:1ad45a1f5d0b608253b11508f80940985d1d0c8f6111b5cb637533a0e6ddc13e", size = 250386 },
     { url = "https://files.pythonhosted.org/packages/11/91/87fa6f060e649b1e1a7b19a4f5869709fbf750b7c8c262ee776ec32f3028/psutil-6.1.0-cp37-abi3-win_amd64.whl", hash = "sha256:a8fb3752b491d246034fa4d279ff076501588ce8cbcdbb62c32fd7a377d996be", size = 254228 },
+]
+
+[[package]]
+name = "psy"
+version = "0.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "progressbar2" },
+    { name = "scipy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/91/bd/7bafe2a4b8c176743c1a926272c13f77bd9c0ff839653c5f9697deb03557/psy-0.0.1.tar.gz", hash = "sha256:bb674edc63a661b7f3e0447c56b978883dd01e805eb33ffb06238c2f8ee70455", size = 71966 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ef/45/2b97f1c60c0d3e5c233911246140229771f62a9760b7f0774d104d34e2b3/psy-0.0.1-py2.py3-none-any.whl", hash = "sha256:167c116fb312993f36d3f988e97fff69aa61e261156e800f2e1447e7e7276ab8", size = 38321 },
 ]
 
 [[package]]
@@ -795,6 +876,21 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/bf/b8/500a772825c7ca87e4fd69c3bd6740e3375d6792a7065dd92759249f223d/pydot-3.0.3.tar.gz", hash = "sha256:5e009d97b2fff92b7a88f09ec1fd5b163f07f3b10469c927d362471d6faa0d50", size = 168086 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3e/1b/ef569ac44598b6b24bc0f80d5ac4f811af59d3f0d0d23b0216e014c0ec33/pydot-3.0.3-py3-none-any.whl", hash = "sha256:9b0b3081e0bd362d0c61148da10eb1281ec80089b02a28cf06f9093843986f3d", size = 35784 },
+]
+
+[[package]]
+name = "pygam"
+version = "0.8.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "future" },
+    { name = "numpy" },
+    { name = "progressbar2" },
+    { name = "scipy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fa/a4/c170504af2f7c71860a0c21d0921d99d2c41a5251877c0daea0ec1d3adc8/pygam-0.8.0.tar.gz", hash = "sha256:5cae01aea8b2fede72a6da0aba1490213af54b3476745666af26bbe700479166", size = 5513536 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/13/be/775033ef08a8945bec6ad7973b161ca909f852442e0d7cfb8d1a214de1ac/pygam-0.8.0-py2.py3-none-any.whl", hash = "sha256:198bd478700520b7c399cc4bcbc011e46850969c32fb09ef0b7a4bbb14e842a5", size = 1824692 },
 ]
 
 [[package]]
@@ -825,6 +921,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/66/c0/0c8b6ad9f17a802ee498c46e004a0eb49bc148f2fd230864601a86dcf6db/python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3", size = 342432 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427", size = 229892 },
+]
+
+[[package]]
+name = "python-utils"
+version = "3.9.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/13/4c/ef8b7b1046d65c1f18ca31e5235c7d6627ca2b3f389ab1d44a74d22f5cc9/python_utils-3.9.1.tar.gz", hash = "sha256:eb574b4292415eb230f094cbf50ab5ef36e3579b8f09e9f2ba74af70891449a0", size = 35403 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d4/69/31c82567719b34d8f6b41077732589104883771d182a9f4ff3e71430999a/python_utils-3.9.1-py2.py3-none-any.whl", hash = "sha256:0273d7363c7ad4b70999b2791d5ba6b55333d6f7a4e4c8b6b39fb82b5fab4613", size = 32078 },
 ]
 
 [[package]]
@@ -1029,6 +1137,21 @@ wheels = [
 ]
 
 [[package]]
+name = "semopy"
+version = "2.3.11"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numdifftools" },
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "scikit-learn" },
+    { name = "scipy" },
+    { name = "statsmodels" },
+    { name = "sympy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f2/d5/7cd2dcd8d24670f902794695986be856f0fa2bc695484f8746df066c7535/semopy-2.3.11.tar.gz", hash = "sha256:eb6336f8438f0ea6fcfdceb91d448196c3940827ff11a0948889ce6755895653", size = 1636397 }
+
+[[package]]
 name = "six"
 version = "1.17.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1221,6 +1344,18 @@ wheels = [
 ]
 
 [[package]]
+name = "sympy"
+version = "1.13.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "mpmath" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/11/8a/5a7fd6284fa8caac23a26c9ddf9c30485a48169344b4bd3b0f02fef1890f/sympy-1.13.3.tar.gz", hash = "sha256:b27fd2c6530e0ab39e275fc9b683895367e51d5da91baa8d3d64db2565fec4d9", size = 7533196 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/99/ff/c87e0622b1dadea79d2fb0b25ade9ed98954c9033722eb707053d310d4f3/sympy-1.13.3-py3-none-any.whl", hash = "sha256:54612cf55a62755ee71824ce692986f23c88ffa77207b30c1368eda4a7060f73", size = 6189483 },
+]
+
+[[package]]
 name = "tabulate"
 version = "0.9.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1275,6 +1410,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/eb/79/72064e6a701c2183016abbbfedaba506d81e30e232a68c9f0d6f6fcd1574/traitlets-5.14.3.tar.gz", hash = "sha256:9ed0579d3502c94b4b3732ac120375cda96f923114522847de4b3bb98b96b6b7", size = 161621 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/00/c0/8f5d070730d7836adc9c9b6408dec68c6ced86b304a9b26a14df072a6e8c/traitlets-5.14.3-py3-none-any.whl", hash = "sha256:b74e89e397b1ed28cc831db7aea759ba6640cb3de13090ca145426688ff1ac4f", size = 85359 },
+]
+
+[[package]]
+name = "typing-extensions"
+version = "4.12.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/df/db/f35a00659bc03fec321ba8bce9420de607a1d37f8342eee1863174c69557/typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8", size = 85321 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/26/9f/ad63fc0248c5379346306f8668cda6e2e2e9c95e01216d2b8ffd9ff037d0/typing_extensions-4.12.2-py3-none-any.whl", hash = "sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d", size = 37438 },
 ]
 
 [[package]]
