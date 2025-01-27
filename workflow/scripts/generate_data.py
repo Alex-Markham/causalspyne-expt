@@ -29,7 +29,7 @@ elif graph_size == "large":
     degree = 5
 
 # causalspyne data generation
-arr_data, node_names, dag = gen_partially_observed(
+subview, node_names, dag = gen_partially_observed(
     size_micro_node_dag=num_micro,
     num_macro_nodes=num_macro,
     degree=degree,  # average vertex/node degree
@@ -42,7 +42,7 @@ arr_data, node_names, dag = gen_partially_observed(
 )
 
 # outputs
-data_df = pd.DataFrame(arr_data)
+data_df = pd.DataFrame(subview.data)
 data_df.to_csv(snakemake.output["dataset"], index=False)
 # `snakemake.output['dag']` and `snakemake.output['hidden_nodes']`
 # saved automatically in call to `gen_partially_observed()`
