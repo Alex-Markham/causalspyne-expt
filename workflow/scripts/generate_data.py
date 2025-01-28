@@ -29,7 +29,7 @@ elif graph_size == "large":
     degree = 5
 
 # causalspyne data generation
-subview, node_names, dag = gen_partially_observed(
+subview, node_names, dag, subview_global_inds = gen_partially_observed(
     size_micro_node_dag=num_micro,
     num_macro_nodes=num_macro,
     degree=degree,  # average vertex/node degree
@@ -48,5 +48,7 @@ data_df.to_csv(snakemake.output["dataset"], index=False)
 # saved automatically in call to `gen_partially_observed()`
 with open(snakemake.output["dag_pkl"], "wb") as outp:
     pickle.dump(dag, outp, pickle.HIGHEST_PROTOCOL)
+with open(snakemake.output["subview_global_inds"], "wb") as outp:
+    pickle.dump(subview_global_inds, outp, pickle.HIGHEST_PROTOCOL)
 with open(snakemake.output["node_names"], "wb") as outp:
     pickle.dump(node_names, outp, pickle.HIGHEST_PROTOCOL)

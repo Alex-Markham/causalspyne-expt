@@ -14,6 +14,7 @@ rule generate_data:
         dataset=f"results/datasets/{pattern_dataset}data.csv",
         dag=f"results/datasets/{pattern_dataset}ground_truth_dag.csv",
         dag_pkl=f"results/datasets/{pattern_dataset}ground_truth_dag.pkl",
+        subview_global_inds=f"results/datasets/{pattern_dataset}subview_global_inds.pkl",
         hidden_nodes=f"results/datasets/{pattern_dataset}hidden_nodes.csv",
         node_names=f"results/datasets/{pattern_dataset}node_names.pkl",
     script:
