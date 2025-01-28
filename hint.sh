@@ -3,6 +3,8 @@
 python3 -m uv sync  # for conda-free python 
 uv sync   # ensures my environment matches the uv.lock file
 uv lock --upgrade-package causalSpyne  # <package> does not have to be in pip, this is specified in pyproject.toml
+uv lock --upgrade-package causalspyne; uv sync  # to upgrade the package and sync the environment together
+
 # e.g. uv lock --upgrade-package pyqt6-qt6==6.7.1 to downgrade 6.8.0 to 6.7.1 to avoid platform
 # consistency problems.
 # [tool.uv.sources]
