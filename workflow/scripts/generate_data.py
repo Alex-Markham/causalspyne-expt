@@ -29,11 +29,11 @@ elif graph_size == "large":
     degree = 5
 
 # causalspyne data generation
-subview, node_names, dag, subview_global_inds = gen_partially_observed(
+subview = gen_partially_observed(
     size_micro_node_dag=num_micro,
     num_macro_nodes=num_macro,
-    degree=degree,  # average vertex/node degree
-    list_confounder2hide=percentile,  # choie of confounder to hide: percentile or index of all toplogically sorted confounders
+    degree=degree,
+    list_confounder2hide=percentile,
     num_sample=samp_size,
     rng=np.random.default_rng(seed),
     output_dir=output_dir,
@@ -47,8 +47,8 @@ data_df.to_csv(snakemake.output["dataset"], index=False)
 # `snakemake.output['dag']` and `snakemake.output['hidden_nodes']`
 # saved automatically in call to `gen_partially_observed()`
 with open(snakemake.output["dag_pkl"], "wb") as outp:
-    pickle.dump(dag, outp, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(subview.dag, outp, pickle.HIGHEST_PROTOCOL)
 with open(snakemake.output["subview_global_inds"], "wb") as outp:
-    pickle.dump(subview_global_inds, outp, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(subview.col_inds, outp, pickle.HIGHEST_PROTOCOL)
 with open(snakemake.output["node_names"], "wb") as outp:
-    pickle.dump(node_names, outp, pickle.HIGHEST_PROTOCOL)
+    pickle.dump(subview.node_names, outp, pickle.HIGHEST_PROTOCOL)
