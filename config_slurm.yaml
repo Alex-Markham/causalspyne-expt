@@ -4,19 +4,19 @@ cluster:
   export parentfolder=$(dirname "$logdir") &&
   export outputfolder=$(basename "$parentfolder") &&
   sbatch
-    --partition=gpu_p
-    --qos=gpu_normal
-    --gres=gpu:1
+    --partition=cpu_p
+    --qos=cpu_normal
+    --gres=cpu:1
     --nice=10000
     -t 24:00:00
     -c 2
-    --mem=160G
+    --mem=10G
     --job-name=$outputfolder-{rule}-{wildcards}
     --output=$logdir/{rule}/{rule}-{wildcards}-%j.out
     --error=$logdir/{rule}/{rule}-{wildcards}-%j.err
 default-resources:
-  - partition=gpu_p
-  - qos=gpu_normal
+  - partition=cpu_p
+  - qos=cpu_normal
   - mem_mb=100000
 restart-times: 3
 max-jobs-per-second: 10
