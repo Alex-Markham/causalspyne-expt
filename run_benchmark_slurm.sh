@@ -6,4 +6,4 @@
 #SBATCH -c 2
 #SBATCH --mem=10G
 
-uv run snakemake --profile "slurm/config.yaml" --keep-going --keep-incomplete
+uv run snakemake --profile "./slurm" --keep-going --keep-incomplete
