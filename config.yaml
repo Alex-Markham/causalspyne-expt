@@ -1,0 +1,25 @@
+executor: slurm
+jobs: 300
+default-resources:
+    mem_mb_per_cpu: 8000
+    runtime: 600
+set-resources:
+    # fit_fci:
+    #     runtime: 900
+    #     slurm_partition: highmem
+    #     mem_mb_per_cpu: 32000
+#    fit_ncfa:
+#        slurm_partition: gpu_h100
+#        slurm_extra: "'--gres=gpu:1'"
+    cross_validate_ncfa:
+        runtime: 900
+#        slurm_partition: gpu_h100
+#        slurm_extra: "'--gres=gpu:1'"
+    gp_data:
+        runtime: 600
+    fit_kfci:
+        runtime: 600
+        slurm_partition: highmem
+        mem_mb_per_cpu: 32000
+    fit_gin:
+        runtime: 1200
