@@ -6,6 +6,4 @@
 #SBATCH -c 2
 #SBATCH --mem=10G
 
-export logdir="slurm_logs/"
-echo "slurm logs going into ${logdir}"
-uv run snakemake --profile "~/caucalspyne-expt/config.yaml" --keep-going --keep-incomplete --notemp
+uv run snakemake --profile "~/caucalspyne-expt/slurm" --keep-going --keep-incomplete
