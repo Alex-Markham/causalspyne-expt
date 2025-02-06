@@ -1,0 +1,6 @@
+executor: slurm
+jobs: 20
+default-resources:
+  - partition=cpu_p
+  - qos=cpu_normal
+  - mem_mb=100000
