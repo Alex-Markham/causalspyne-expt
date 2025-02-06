@@ -8,8 +8,6 @@ cluster:
     -c 2
     --mem=10G
     --job-name=$outputfolder-{rule}-{wildcards}
-    --output=$logdir/{rule}/{rule}-{wildcards}-%j.out
-    --error=$logdir/{rule}/{rule}-{wildcards}-%j.err
 default-resources:
   - partition=cpu_p
   - qos=cpu_normal
