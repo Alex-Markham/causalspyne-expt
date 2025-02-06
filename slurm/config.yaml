@@ -1,8 +1,6 @@
 executor: slurm
-jobs: 300
+jobs: 20
 default-resources:
-    mem_mb_per_cpu: 8000
-    runtime: 600
-    partition: cpu_p
-    qos: cpu_normal
-    mem_mb: 100000
+  - partition=cpu_p
+  - qos=cpu_normal
+  - mem_mb=100000
