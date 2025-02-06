@@ -7,7 +7,6 @@ cluster:
     -t 24:00:00
     -c 2
     --mem=10G
-    --job-name=$outputfolder-{rule}-{wildcards}
 default-resources:
   - partition=cpu_p
   - qos=cpu_normal
